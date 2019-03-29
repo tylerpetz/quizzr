@@ -7,31 +7,40 @@
     <b-field label="Description">
       <b-input v-model="quiz.description"></b-input>
     </b-field>
-    <button @click="createQuiz" class="button is-primary">Create Quiz</button>
+    <button @click="createNewQuiz" class="button is-primary">
+      Create Quiz
+    </button>
   </div>
 </template>
 
 <script>
-class Quiz {
-  constructor(name = "", description = "", questions = []) {
-    this.name = name;
-    this.description = description;
-    this.questions = questions;
-  }
-}
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "NewQuiz",
   data() {
     return {
-      quizzes: [],
-      quiz: new Quiz()
+      quiz: {
+        name: "",
+        description: ""
+      }
     };
   },
+  computed: {
+    ...mapGetters("quiz", {
+      quizzes: "quizzes"
+    })
+  },
   methods: {
-    createQuiz() {
-      this.quizzes.push(this.quiz);
-      this.quiz = new Quiz();
+    ...mapActions("quiz", {
+      createQuiz: "createQuiz"
+    }),
+    createNewQuiz() {
+      // Commit to state
+      this.createQuiz(this.quiz);
+
+      // Reset quiz object
+      //this.quiz = new Quiz();
     }
   }
 };
