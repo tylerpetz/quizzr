@@ -1,0 +1,9 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "name": "First quiz",
+      "description": "here is the first quiz"
+    }
+  ]
+}
