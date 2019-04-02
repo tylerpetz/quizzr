@@ -22,17 +22,11 @@
         </tr>
       </tfoot>
       <tbody>
-        <tr>
-          <th>Test 1</th>
+        <tr v-for="quiz in quizzes" :key="quiz.id">
+          <th>{{ quiz.name }}</th>
           <td>10</td>
           <td>0</td>
           <td>100%</td>
-        </tr>
-        <tr>
-          <th>Test 2</th>
-          <td>20</td>
-          <td>1</td>
-          <td>50%</td>
         </tr>
       </tbody>
     </table>
@@ -44,7 +38,22 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  computed: {
+    ...mapGetters('quiz', {
+      quizzes: 'quizzes'
+    })
+  },
+  methods: {
+    ...mapActions('quiz', {
+      fetch: 'fetchQuizzes'
+    }),
+  },
+  mounted() {
+    this.fetch();
+  } 
 };
 </script>

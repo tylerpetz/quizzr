@@ -1,5 +1,10 @@
 # quizzr
 
+## Start JSON Server
+```
+json-server --watch db.json
+```
+
 ## Project setup
 ```
 yarn install

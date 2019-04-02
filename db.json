@@ -4,6 +4,11 @@
       "id": 1,
       "name": "First quiz",
       "description": "here is the first quiz"
+    },
+    {
+      "name": "test",
+      "description": "test",
+      "id": 2
     }
   ]
 }
